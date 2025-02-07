@@ -1,0 +1,91 @@
+import { useParams } from "react-router-dom";
+import axios from 'axios';
+
+function PokemonPopup({
+  x,
+  y,
+  clicked,
+  setClicked,
+  pokemonList,
+  setPokemonList,
+  finished,
+  setFinished,
+}) {
+  const { game } = useParams();
+
+  let codX, codY;
+  if (x > window.innerWidth / 2) {
+    codX = x - 180;
+  } else {
+    codX = x + 40;
+  }
+  if (y > window.innerHeight / 2) {
+    codY = y - 140;
+  } else {
+    codY = y + 20;
+  }
+  
+  const handleSelect = async (e) => {
+    // console.log(game);
+    const centX = (x / window.innerWidth) * 100;
+    const centY =
+      ((y - document.querySelector(".image").offsetTop) /
+        ((window.innerWidth / document.querySelector(".image").naturalWidth) *
+          document.querySelector(".image").naturalHeight)) *
+      100;
+      console.log(centX, centY);
+    const selectedPokemon = e.target.innerText;
+
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/api/check-coordinates`,
+        {
+          pokemonName: selectedPokemon,
+          x: centX,
+          y: centY,
+          game: game
+        }
+      );
+
+      if (response.data.isCorrect) {
+        const updatedList = pokemonList.map(poke => 
+          poke.name === selectedPokemon 
+            ? {...poke, completed: true}
+            : poke
+        );
+        setPokemonList(updatedList);
+        alert(`Correct! You found ${selectedPokemon}`);
+      }
+    } catch (error) {
+      console.error("Error verifying pokemon location:", error);
+      alert("Error checking location");
+    }
+
+    setClicked(false);
+  };
+
+  return (
+    <div
+      className="flex flex-col absolute top-0 left-0 bg-white justify-center items-center"
+      style={{
+        top: `${codY}px`,
+        left: `${codX}px`,
+      }}
+    >
+      {pokemonList
+        .filter(poke => !poke.completed)  
+        .map((poke) => (
+          <div
+            key={poke.name}
+            className="flex items-center gap-4 p-1 border w-full hover:cursor-pointer"
+            onClick={handleSelect}
+          >
+            <img src={poke.image} className="image h-10" alt={poke.name} />
+            <div className="text-[0.7rem]">{poke.name}</div>
+          </div>
+        ))}
+    </div>
+  );
+}
+
+export default PokemonPopup;

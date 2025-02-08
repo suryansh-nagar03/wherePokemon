@@ -31,7 +31,7 @@ const pokemon = {
       image: "/game1-p2.jpeg",
     },
     {
-      name: "Seaking",
+      name: "Magikarp",
       image: "/game1-p3.png",
     },
   ],

@@ -1,12 +1,4 @@
 function LeaderboardTable({data}){
-    const mockData = [
-        { name: "John Doe", timeTaken: "1:30", date: "2024-01-15" },
-        { name: "Jane Smith", timeTaken: "2:15", date: "2024-01-14" },
-        { name: "Mike Johnson", timeTaken: "1:45", date: "2024-01-13" },
-        { name: "Sarah Williams", timeTaken: "2:00", date: "2024-01-12" },
-        { name: "Tom Brown", timeTaken: "1:55", date: "2024-01-11" }
-    ];
-
     return (
         <>
         <div className="text-center text-2xl font-semibold">Leaderboard </div>

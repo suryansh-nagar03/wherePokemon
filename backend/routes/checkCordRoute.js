@@ -5,7 +5,7 @@ const pokemonCardMapping = {
     1: [
         { "pikachu":[{xl:31.5},{xr:45},{yt:74.1},{yb:84.2}] },
         { "bellspout":[{xl:53.5},{xr:71.6},{yt:50.9},{yb:58.26}] },
-        { "seaking":[{xl:25},{xr:33.5},{yt:11.5},{yb:19.5}] },
+        { "magikarp":[{xl:25},{xr:33.5},{yt:11.5},{yb:19.5}] },
     ],
     2: [
         { "charmander":[{xl:73.1},{xr:77},{yt:33.5},{yb:38.5}] },

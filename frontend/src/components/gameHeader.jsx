@@ -7,7 +7,7 @@ const gameMapping = {
       img2: "/game1-p2.jpeg",
       name2: "Bellspout",
       img3: "/game1-p3.png",
-      name3: "Seaking"
+      name3: "Magikarp"
   },
   "2": {
       img1: "/game2-p1.jpeg",

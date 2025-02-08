@@ -41,7 +41,7 @@ function PokemonPopup({
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/check-coordinates`,
+        `https://wherespokemon.onrender.com/api/check-coordinates`,
         {
           pokemonName: selectedPokemon,
           x: centX,

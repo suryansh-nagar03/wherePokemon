@@ -17,7 +17,7 @@ function Win({ playTime, game }) {
         }
 
         try {
-            const response = await axios.post('http://localhost:3000/leaderboard', {
+            const response = await axios.post('https://wherespokemon.onrender.com/leaderboard', {
                 name: playerName,
                 time: timeInSeconds,
                 game: game

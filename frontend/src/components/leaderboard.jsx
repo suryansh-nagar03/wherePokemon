@@ -17,7 +17,7 @@ export default function Leaderboard(){
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`http://localhost:3000/leaderboard?game=${selected}`);
+                const response = await axios.get(`https://wherespokemon.onrender.com/leaderboard?game=${selected}`);
                 const modifiedData = response.data
                     .map(item => ({
                         ...item,
@@ -44,8 +44,15 @@ export default function Leaderboard(){
                     <div className={`${selected===3?"border-yellow-600 border-2 rounded-lg shadow-[0_0px_30px_rgba(480,280,180,0.9)]":""}`}><GameCard img="/third-game.png" text="All Generations" game={3} setSelected={setSelected}/></div>
                 </div>
             </div>
-            {loading && <div className="tracking-tighter">Loading...</div>}
-            {(data.length===0) ? <div className="loading">No data available</div>: <LeaderboardTable data={data} />}
-        </div>
+            {loading ? (
+                <div className="tracking-tighter">Loading...</div>
+            ) : (
+                data.length === 0 ? (
+                    <div className="loading">No data available</div>
+                ) : (
+                    <LeaderboardTable data={data} />
+                )
+            )}
+        </div>  
     )
 };

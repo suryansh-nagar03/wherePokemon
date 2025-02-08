@@ -111,7 +111,7 @@ function Game({ setPokemonList: setParentPokemonList }) {
       {showRules && <Rules setShowRules={setShowRules} />}
       <img
         src={gameMapping[game].image}
-        className="w-full hover:cursor-pointer"
+        className="game-image w-full hover:cursor-pointer"
         onClick={handleClick}
       />
       {clicked && (

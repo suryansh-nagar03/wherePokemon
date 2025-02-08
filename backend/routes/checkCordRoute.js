@@ -3,25 +3,25 @@ const router = express.Router();
 
 const pokemonCardMapping = {
     1: [
-        { "pikachu":[{xl:31.5},{xr:45},{yt:125},{yb:140}] },
-        { "bellspout":[{xl:54},{xr:66},{yt:84.5},{yb:97}] },
-        { "seaking":[{xl:25},{xr:33.5},{yt:19},{yb:31.5}] },
+        { "pikachu":[{xl:31.5},{xr:45},{yt:74.1},{yb:84.2}] },
+        { "bellspout":[{xl:53.5},{xr:71.6},{yt:50.9},{yb:58.26}] },
+        { "seaking":[{xl:25},{xr:33.5},{yt:11.5},{yb:19.5}] },
     ],
     2: [
-        { "charmander":[{xl:73.1},{xr:77},{yt:27},{yb:31.5}] },
-        { "azurill":[{xl:41.5},{xr:44},{yt:62},{yb:66}] },
-        { "jynx":[{xl:67.2},{xr:71},{yt:43.5},{yb:49}] },
+        { "charmander":[{xl:73.1},{xr:77},{yt:33.5},{yb:38.5}] },
+        { "azurill":[{xl:41},{xr:44},{yt:76},{yb:81}] },
+        { "jynx":[{xl:67.2},{xr:71},{yt:53.8},{yb:60.3}] },
     ],
     3: [
-        { "groudon":[{xl:62.8},{xr:72},{yt:16.8},{yb:27.8}] },
-        { "primeape":[{xl:32.35},{xr:39.1},{yt:90.4},{yb:97.6}] },
-        { "mr.mime":[{xl:4.6},{xr:10.36},{yt:118.5},{yb:126.5}] },
+        { "groudon":[{xl:62.8},{xr:72},{yt:9.7},{yb:15.9}] },
+        { "primeape":[{xl:32.35},{xr:39.1},{yt:50.7},{yb:54.7}] },
+        { "mr.mime":[{xl:4.6},{xr:10.36},{yt:66.72},{yb:70.6}] },
     ],
 };  
 
 router.post('/', (req, res) => {
     const { pokemonName, x, y, game } = req.body;
-
+    console.log(pokemonName, x, y, game);
     if (!pokemonCardMapping[game]) {
         return res.status(400).json({ isCorrect: false, message: "Invalid game ID" });
     }
@@ -40,7 +40,6 @@ router.post('/', (req, res) => {
     const yt = coordinates[2].yt;
     const yb = coordinates[3].yb;
 
-    // Check if clicked coordinates are within the boundary box
     const isWithinBounds = x >= xl && x <= xr && y >= yt && y <= yb;
 
     res.json({ 

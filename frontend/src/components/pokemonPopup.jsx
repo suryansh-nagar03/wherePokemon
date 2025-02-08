@@ -27,14 +27,17 @@ function PokemonPopup({
   
   const handleSelect = async (e) => {
     // console.log(game);
+    const gameImage = document.querySelector('.game-image');
+    if (!gameImage) return;
+
     const centX = (x / window.innerWidth) * 100;
-    const centY =
-      ((y - document.querySelector(".image").offsetTop) /
-        ((window.innerWidth / document.querySelector(".image").naturalWidth) *
-          document.querySelector(".image").naturalHeight)) *
-      100;
-      console.log(centX, centY);
+    const imageTop = gameImage.offsetTop;
+    const imageHeight = gameImage.offsetHeight;
+    const relativeY = y - imageTop;
+    const centY = (relativeY / imageHeight) * 100;
+
     const selectedPokemon = e.target.innerText;
+    console.log(centX, centY);
 
     try {
       const response = await axios.post(
@@ -80,7 +83,7 @@ function PokemonPopup({
             className="flex items-center gap-4 p-1 border w-full hover:cursor-pointer"
             onClick={handleSelect}
           >
-            <img src={poke.image} className="image h-10" alt={poke.name} />
+            <img src={poke.image} className="h-10" alt={poke.name} />
             <div className="text-[0.7rem]">{poke.name}</div>
           </div>
         ))}

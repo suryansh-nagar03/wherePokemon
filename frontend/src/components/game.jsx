@@ -107,17 +107,17 @@ function Game({ setPokemonList: setParentPokemonList }) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-cover bg-white h-dvh">
       {showRules && <Rules setShowRules={setShowRules} />}
       <img
         src={gameMapping[game].image}
         className="game-image w-full hover:cursor-pointer"
         onClick={handleClick}
-      />
+      />  
       {clicked && (
         <>
           <div
-            className="absolute rounded-full w-10 h-10 bg-blue-500/20 border-1 border-black"
+            className="absolute rounded-full w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 bg-blue-500/20 border-1 border-black"
             style={{
               top: `${y - 20}px`,
               left: `${x - 20}px`,

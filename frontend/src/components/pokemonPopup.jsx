@@ -83,8 +83,8 @@ function PokemonPopup({
             className="flex items-center gap-4 p-1 border w-full hover:cursor-pointer"
             onClick={handleSelect}
           >
-            <img src={poke.image} className="h-10" alt={poke.name} />
-            <div className="text-[0.7rem]">{poke.name}</div>
+            <img src={poke.image} className="h-4 sm:h-7 md:h-10" alt={poke.name} />
+            <div className="text-[0.4rem] sm:text-[0.5rem] md:text-[0.7rem]">{poke.name}</div>
           </div>
         ))}
     </div>
